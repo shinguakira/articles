@@ -1,4 +1,14 @@
-
+---
+title: レビュー指摘 ≒ AIの改善
+tags:
+  - AI駆動開発
+  - コードレビュー
+  - 静的解析
+  - 開発環境
+  - 自動生成
+private: false
+qiita_url: https://qiita.com/ShinguAkira/items/551dff38b96c28beafd6
+---
 
 ## 1. メンバーへのレビュー指摘 ≒ AIの改善
 
