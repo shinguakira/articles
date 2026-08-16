@@ -1,11 +1,12 @@
 ---
 title: RAGはベクトルである必要はないのでは
 tags:
-  - RAG
-  - LLM
-  - AI
-  - 検索
+  - rag
+  - チャットボット
+  - ベクトル検索
+  - ベクトルデータベース
 private: false
+qiita_url: https://qiita.com/ShinguAkira/items/3d42335a7a54f5107f34
 ---
 
 ## RAG登場時のイメージとその用途利点
