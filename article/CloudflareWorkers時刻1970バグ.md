@@ -1,5 +1,5 @@
 ---
-title: Cloudflare Workers で new Date() が 1970 年になる — バグではなく仕様
+title: Cloudflare Workers で new Date() が 1970 年になる
 tags:
   - Cloudflare
   - CloudflareWorkers
@@ -23,7 +23,7 @@ console.log(bootTime); // → 1970-01-01T00:00:00.000Z
 
 ## 原因
 
-これはバグではなく、Workers ランタイムの**意図した仕様**です。ポイントは2つあります。
+これはバグではなく、Workers ランタイムの挙動です。ポイントは2つあります。
 
 ### 1. グローバルスコープでは時刻が「0」になる
 
@@ -74,7 +74,7 @@ export default {
 
 ## まとめ
 
-- Workers のグローバルスコープでは `Date.now()` は 0（1970-01-01）を返す。これは決定性と Spectre 対策のための仕様。
+- Workers のグローバルスコープでは `Date.now()` は 0（1970-01-01）を返す。決定性と Spectre 対策のため。
 - 時計は I/O ごとにしか進まないので、時刻はリクエストハンドラ内で取得する。
 - タイムゾーンは UTC 前提。表示・Cron ともに明示的に扱う。
 
