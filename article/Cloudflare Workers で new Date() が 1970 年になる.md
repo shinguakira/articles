@@ -1,12 +1,13 @@
 ---
 title: Cloudflare Workers で new Date() が 1970 年になる
 tags:
-  - Cloudflare
+  - cloudflare
+  - zod
   - CloudflareWorkers
-  - JavaScript
-  - Date
-  - タイムゾーン
+  - date
+  - TypeScript
 private: false
+qiita_url: https://qiita.com/ShinguAkira/items/da79f3e02d442e6b54d8
 ---
 
 ## 現象

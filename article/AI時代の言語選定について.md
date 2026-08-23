@@ -1,3 +1,15 @@
+---
+title: AI時代の言語選定について
+tags:
+  - 技術選定
+  - AI駆動開発
+  - 言語比較
+  - Rust
+  - Go
+private: false
+qiita_url: https://qiita.com/ShinguAkira/items/fecf2b57da57082c2754
+---
+
 ## 個人的言語選定
 
 個人的には
