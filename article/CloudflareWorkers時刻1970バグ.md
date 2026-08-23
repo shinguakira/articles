@@ -105,8 +105,6 @@ const schema = z.object({
 
 ## 参考
 
-一番の情報源は、Cloudflare のエンジニア Kenton Varda による Stack Overflow の回答です。`Date.now()` が最後の I/O の時刻を返す挙動をここで説明しています。
-
-- [Cloudflare Workers: Date.now() の挙動（Kenton Varda の回答）](https://stackoverflow.com/questions/50611329/cloudflare-workers-date-now)
-- [Fetch handler - Runtime APIs · Cloudflare Workers docs](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
-- [JavaScript | Web standards · Cloudflare Workers docs](https://developers.cloudflare.com/workers/runtime-apis/web-standards/)
+- [Performance and timers · Cloudflare Workers docs](https://developers.cloudflare.com/workers/runtime-apis/performance/)
+- [JavaScript and web standards · Cloudflare Workers docs](https://developers.cloudflare.com/workers/runtime-apis/web-standards/) — `Date.now()` が最後の I/O の時刻を返すことに触れている
+- [Mitigating Spectre and Other Security Threats（Kenton Varda / Cloudflare Blog）](https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model/) — なぜ実行中は時計を止めるのか、その背景
