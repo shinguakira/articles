@@ -72,6 +72,31 @@ export default {
 - `new Date()` が持つ値は UTC。表示は `toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })` のように `timeZone` を明示する。
 - Cron Triggers（`wrangler.toml` の `crons`）も UTC 基準。日本時間のつもりで組むと9時間ずれる。JST 9:00 に動かしたいなら UTC 0:00、つまり `0 0 * * *` で書く。
 
+## 実際に踏んだケース
+
+zod のスキーマをフロント・バックの共有箇所に置いていて、未来日を弾くバリデーションで踏みました。
+
+```ts
+// 共有スキーマ
+const schema = z.object({
+  date: z.date().max(new Date(), { message: "未来日は指定できません" }),
+});
+```
+
+`new Date()` がスキーマ定義（モジュールのトップレベル）で評価されると、Workers 上では 1970-01-01 になります。その結果、上限が 1970 年に固定されてしまい、現在の日付まで「未来日」として弾かれました。共有スキーマなのでフロントでは正常に動き、Workers 側だけで再現するのも気づきにくかった点です。
+
+`new Date()` はスキーマ定義時ではなく、バリデーションが走るタイミング（リクエストハンドラの中）で評価されるようにすれば直ります。
+
+```ts
+const schema = z.object({
+  date: z.date().max(new Date(), { message: "未来日は指定できません" }),
+});
+// ↑ 呼び出しをリクエスト内に置く。あるいは refine で実行時に new Date() を取る
+const schema = z.object({
+  date: z.date().refine((d) => d <= new Date(), { message: "未来日は指定できません" }),
+});
+```
+
 ## まとめ
 
 - グローバルスコープでは `Date.now()` は 0（1970-01-01）を返す。決定性と Spectre 対策のため。
